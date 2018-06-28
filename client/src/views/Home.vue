@@ -176,8 +176,13 @@ export default {
     }
   },
   created: function() {
-    this.getdata()
-    this.getUser()
+    if (localStorage.hasOwnProperty('token') === true) {
+      this.getdata()
+      this.getUser()
+    }
+    else{
+      this.$router.push('/')
+    }
   },
   methods: {
     postTweet() {

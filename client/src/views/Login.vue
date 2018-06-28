@@ -2,25 +2,24 @@
 
   <div class="container">
     <div class="row">
-        <form class="loginform">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <form class="loginform">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" v-model="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="row">
+          <div class="col s2">
+            <button type="button" @click="login" class="btn btn-danger btn-block">Login</button>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" v-model="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div class="row">
-            <div class="col s2">
-              <button type="button" @click="login" class="btn btn-danger btn-block">Login</button>
-            </div>
-          </div>
+        </div>
 
-        </form>
-      </div>
+      </form>
     </div>
-  
+  </div>
 
 </template>
 
@@ -34,6 +33,11 @@ export default {
     return {
       email: '',
       password: ''
+    }
+  },
+  created: function() {
+    if (localStorage.hasOwnProperty('token') === true) {
+      this.$router.push('/home')
     }
   },
   methods: {
